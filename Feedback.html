@@ -1,274 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBFIRA | Feedback</title>
-
-    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alike&family=Be+Vietnam+Pro:wght@400;500;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap FIRST -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <style>
-        :root {
-            --green:        #246459;
-            --green-dark:   #1a4a41;
-            --green-light:  #2e7a6c;
-            --pastel-yellow:#f5e6a3;
-            --white:        #ffffff;
-            --card-bg:      rgba(255,255,255,0.08);
-            --card-border:  rgba(255,255,255,0.15);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: var(--green);
-            color: var(--white);
-            font-family: 'Be Vietnam Pro', sans-serif;
-        }
-
-        /* ── HEADER ── */
-        header {
-            background-color: var(--green-dark);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 2rem;
-            gap: 1.5rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--pastel-yellow);
-            white-space: nowrap;
-        }
-
-        header form input[type="search"] {
-            border: 1.5px solid var(--card-border);
-            border-radius: 6px;
-            padding: 0.45rem 1rem;
-            background: rgba(255,255,255,0.12);
-            color: var(--white);
-            font-size: 0.9rem;
-            width: 240px;
-            outline: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        header form input[type="search"]::placeholder { color: rgba(255,255,255,0.55); }
-        header form input[type="search"]:focus {
-            border-color: var(--pastel-yellow);
-            background: rgba(255,255,255,0.18);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.4rem;
-            flex-wrap: wrap;
-        }
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        nav ul li a:hover { color: var(--pastel-yellow); }
-
-        /* ── HERO ── */
-        .feedback-hero {
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
-            padding: 5rem 2rem 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .feedback-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(245,230,163,0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .feedback-hero h1 {
-            font-family: 'Alike', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: var(--pastel-yellow);
-            margin-bottom: 1rem;
-        }
-        .feedback-hero p {
-            color: rgba(255,255,255,0.88);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* ── FORM SECTION ── */
-        .form-section {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 3.5rem 2rem 5rem;
-        }
-
-        .form-section form {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .form-section label {
-            color: var(--pastel-yellow);
-            font-size: 0.88rem;
-            font-weight: 600;
-            margin-top: 0.8rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .form-section input[type="text"],
-        .form-section input[type="email"],
-        .form-section input[type="tel"],
-        .form-section select,
-        .form-section textarea {
-            background: rgba(255,255,255,0.1);
-            border: 1.5px solid var(--card-border);
-            border-radius: 8px;
-            padding: 0.65rem 1rem;
-            color: var(--white);
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 0.92rem;
-            outline: none;
-            transition: border-color 0.2s, background 0.2s;
-            width: 100%;
-        }
-
-        .form-section input::placeholder,
-        .form-section textarea::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        .form-section input:focus,
-        .form-section select:focus,
-        .form-section textarea:focus {
-            border-color: var(--pastel-yellow);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .form-section select {
-            cursor: pointer;
-        }
-        /* Style dropdown options (limited cross-browser) */
-        .form-section select option {
-            background: var(--green-dark);
-            color: var(--white);
-        }
-
-        .form-section textarea {
-            resize: vertical;
-            min-height: 130px;
-        }
-
-        .form-section button[type="submit"] {
-            margin-top: 1.4rem;
-            background: var(--pastel-yellow);
-            color: var(--green-dark);
-            border: none;
-            border-radius: 8px;
-            padding: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .form-section button[type="submit"]:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background-color: var(--green-dark);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 2rem;
-            padding: 3rem 2rem 1.5rem;
-            border-top: 1px solid var(--card-border);
-        }
-        footer section {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        footer section h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--pastel-yellow);
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        footer section a,
-        footer section p {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.88rem;
-            line-height: 1.6;
-            transition: color 0.2s;
-        }
-        footer section a:hover { color: var(--pastel-yellow); }
-
-        .copyright {
-            grid-column: 1 / -1;
-            text-align: center;
-            color: rgba(255,255,255,0.45);
-            font-size: 0.8rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--card-border);
-            margin-top: 1rem;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-            }
-            header form input[type="search"] { width: 100%; }
-            nav ul { gap: 0.8rem; }
-            .form-section form { padding: 1.5rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="page-green">
 
-<body>
-
-    <!-- HEADER -->
     <header>
         <h1 class="logo">NBFIRA</h1>
-
         <form>
             <input type="search" placeholder="Search">
         </form>
-
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -281,19 +29,15 @@
         </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="feedback-page">
 
-        <!-- HERO -->
         <section class="feedback-hero">
             <h1>Feedback and Complaints</h1>
             <p>Submit complaints, ask questions, report fraud, or request support.</p>
         </section>
 
-        <!-- FORM SECTION -->
         <section class="form-section">
             <form>
-
                 <label for="fullname">Full Name</label>
                 <input type="text" id="fullname" placeholder="Enter your full name" required>
 
@@ -318,13 +62,11 @@
                 <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
 
                 <button type="submit">Submit</button>
-
             </form>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <section>
             <h2>Quick Links</h2>

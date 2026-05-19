@@ -1,0 +1,786 @@
+/* ============================================
+   NBFIRA - Shared Stylesheet
+   style.css
+   ============================================ */
+
+/* ── VARIABLES ── */
+:root {
+    --green:         #246459;
+    --green-dark:    #1a4a41;
+    --green-light:   #2e7a6c;
+    --blue:          #072a59;
+    --blue-dark:     #051e40;
+    --blue-light:    #0a3870;
+    --pastel-yellow: #f5e6a3;
+    --white:         #ffffff;
+    --card-bg:       rgba(255, 255, 255, 0.08);
+    --card-border:   rgba(255, 255, 255, 0.15);
+}
+
+/* ── RESET ── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── BASE ── */
+body {
+    color: var(--white);
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+/* ── GREEN PAGES (Home, About, Feedback) ── */
+body.page-green {
+    background-color: var(--green);
+}
+
+/* ── BLUE PAGES (Consumer, Regulated, News) ── */
+body.page-blue {
+    background-color: var(--blue);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    background-color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    gap: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--pastel-yellow);
+    white-space: nowrap;
+}
+
+header form input[type="search"] {
+    border: 1.5px solid var(--card-border);
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    font-size: 0.9rem;
+    width: 240px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+header form input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+header form input[type="search"]:focus {
+    border-color: var(--pastel-yellow);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ── NAV ── */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--pastel-yellow);
+}
+
+/* ============================================
+   HERO SECTIONS
+   ============================================ */
+.hero,
+.about-hero,
+.feedback-hero,
+.consumer-hero,
+.regulated-hero,
+.news-hero {
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Green hero (Home, About, Feedback) */
+.hero,
+.about-hero,
+.feedback-hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+}
+
+/* Blue hero (Consumer, Regulated, News) */
+.consumer-hero,
+.regulated-hero,
+.news-hero {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+}
+
+.hero::before,
+.about-hero::before,
+.feedback-hero::before,
+.consumer-hero::before,
+.regulated-hero::before,
+.news-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(245, 230, 163, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.hero h1,
+.about-hero h1,
+.feedback-hero h1,
+.consumer-hero h1,
+.regulated-hero h1,
+.news-hero h1 {
+    font-family: 'Alike', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    color: var(--pastel-yellow);
+    margin-bottom: 1.2rem;
+    line-height: 1.35;
+}
+
+.hero p,
+.about-hero p,
+.feedback-hero p,
+.consumer-hero p,
+.regulated-hero p,
+.news-hero p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── HERO BUTTONS (Home only) ── */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: var(--pastel-yellow);
+    color: var(--green-dark);
+    padding: 0.7rem 1.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--pastel-yellow);
+    color: var(--pastel-yellow);
+    padding: 0.7rem 1.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+    background: var(--pastel-yellow);
+    color: var(--green-dark);
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   SHARED SECTION STYLES
+   ============================================ */
+section {
+    padding: 3.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem;
+    color: var(--pastel-yellow);
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+}
+
+section p {
+    color: var(--white);
+}
+
+/* ============================================
+   CARDS (shared)
+   ============================================ */
+.quick-card,
+.entity-card,
+.consumer-card,
+.institution-card,
+.report-card,
+.news-card,
+.vision-card,
+.mission-card,
+.structure-card,
+.leader-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.6rem;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.quick-card:hover,
+.entity-card:hover,
+.consumer-card:hover,
+.institution-card:hover,
+.report-card:hover,
+.news-card:hover,
+.vision-card:hover,
+.mission-card:hover,
+.structure-card:hover,
+.leader-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.quick-card h3,
+.entity-card h3,
+.structure-card h3,
+.report-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+}
+
+.quick-card p,
+.entity-card p,
+.consumer-card p,
+.institution-card p,
+.report-card p,
+.news-card p,
+.structure-card p {
+    color: var(--white);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.quick-card a,
+.entity-card a {
+    color: var(--pastel-yellow);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.quick-card a:hover,
+.entity-card a:hover {
+    opacity: 0.75;
+}
+
+/* ── CARD H2 (Consumer, News, Vision/Mission) ── */
+.consumer-card h2,
+.news-card h2,
+.vision-card h2,
+.mission-card h2,
+.institution-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+
+/* ============================================
+   GRIDS
+   ============================================ */
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+}
+
+.entities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.4rem;
+}
+
+.consumer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+}
+
+.institution-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+}
+
+.vision-mission-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+}
+
+.structure-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.structure-section > h2 {
+    grid-column: 1 / -1;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.reports-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem;
+    align-items: start;
+}
+
+.reports-section > h2 {
+    grid-column: 1 / -1;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+}
+
+.leadership-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.4rem;
+    align-items: start;
+}
+
+.leadership-section > h2 {
+    grid-column: 1 / -1;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   ABOUT PAGE SPECIFIC
+   ============================================ */
+.about-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.about-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    color: var(--white);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+}
+
+/* ── LEADER CARDS ── */
+.leader-card {
+    text-align: center;
+}
+
+.leader-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--pastel-yellow);
+    margin-bottom: 1rem;
+    background: var(--green-light);
+}
+
+.leader-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.leader-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* ── MANDATE ── */
+.mandate-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+}
+
+.mandate-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.mandate-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.mandate-section ul li {
+    color: var(--white);
+    font-size: 0.95rem;
+    padding-left: 1.4rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.mandate-section ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--pastel-yellow);
+    font-size: 0.7rem;
+    top: 0.3rem;
+}
+
+/* ============================================
+   FEEDBACK PAGE SPECIFIC
+   ============================================ */
+.form-section {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+}
+
+.form-section form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-section label {
+    color: var(--pastel-yellow);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-section input[type="text"],
+.form-section input[type="email"],
+.form-section input[type="tel"],
+.form-section select,
+.form-section textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid var(--card-border);
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    color: var(--white);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+}
+
+.form-section input::placeholder,
+.form-section textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+    border-color: var(--pastel-yellow);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-section select option {
+    background: var(--green-dark);
+    color: var(--white);
+}
+
+.form-section textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-section button[type="submit"] {
+    margin-top: 1.4rem;
+    background: var(--pastel-yellow);
+    color: var(--green-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.form-section button[type="submit"]:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   REGULATED ENTITIES SPECIFIC
+   ============================================ */
+.search-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+}
+
+.search-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.search-section p {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.institution-card button {
+    margin-top: 1rem;
+    background: var(--pastel-yellow);
+    color: var(--blue);
+    border: none;
+    border-radius: 6px;
+    padding: 0.45rem 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.institution-card button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.report-card a {
+    display: inline-block;
+    background: var(--pastel-yellow);
+    color: var(--blue);
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 0.45rem 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.report-card a:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   NOTICE BOX (Home page)
+   ============================================ */
+.notice-box {
+    background: rgba(245, 230, 163, 0.15);
+    border: 1.5px solid var(--pastel-yellow);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.notice-box h2 {
+    color: var(--pastel-yellow);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+}
+
+.notice-box p {
+    color: var(--white);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.notice-box button {
+    background: var(--pastel-yellow);
+    color: var(--green-dark);
+    border: none;
+    padding: 0.45rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.notice-box button:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background-color: var(--green);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem 1.5rem;
+    border-top: 1px solid var(--card-border);
+}
+
+footer section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    max-width: none;
+    margin: 0;
+}
+
+footer section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pastel-yellow);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+footer section a,
+footer section p {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    transition: color 0.2s;
+}
+
+footer section a:hover {
+    color: var(--pastel-yellow);
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 1rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    header form input[type="search"] {
+        width: 100%;
+    }
+
+    nav ul {
+        gap: 0.8rem;
+    }
+
+    .form-section form {
+        padding: 1.5rem;
+    }
+}
